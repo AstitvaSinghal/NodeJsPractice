@@ -1,8 +1,8 @@
 var express = require("express");
 var router = express.Router();
 var server = require("../database");
-const { database } = require("../database");
-
+const database = require("../database");
+const middleware = require("../middleware");
 router
   .route("/")
   .all((req, res, next) => {
@@ -24,7 +24,7 @@ router
         next();
       });
   })
-  .post((req, res, next) => {
+  .post(middleware.checkEntryExists, (req, res, next) => {
     console.log("inserting data", req.body);
     server
       .insert(req.body)

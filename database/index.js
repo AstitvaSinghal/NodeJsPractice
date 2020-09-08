@@ -1,6 +1,4 @@
-const { ObjectID } = require("mongodb");
-
-var MongoClient = require("mongodb").MongoClient;
+const { MongoClient, ObjectID } = require("mongodb");
 const server = {};
 var database;
 var collection;
